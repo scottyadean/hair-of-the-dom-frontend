@@ -48,7 +48,7 @@ function PostIndex( props ) {
 
 PostIndex.getInitialProps = async ({ query }) => {
   const {id} = query;
-  const res = await axios.get("http://localhost:3001/post/"+id);
+  const res = await axios.get("https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/post/"+id);
   return { post: res.data.results };
 }
 
