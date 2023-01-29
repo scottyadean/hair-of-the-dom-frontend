@@ -3,8 +3,7 @@ import DefaultLayout from '@/layout/Default'
 function about() {
   return (
     <DefaultLayout>
-
-    <div className='grid-container'>
+      <div className='grid-container'>
 
 
         <div className='grid-item' style={{width:"50vw", paddingLeft: 10,  minWidth: "400px", borderRadius: "10px"}}>

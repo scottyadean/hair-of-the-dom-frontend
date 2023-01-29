@@ -12,9 +12,7 @@ return (
     <Fragment>
     <div className="wrapper">
         <Header />
-        <div className="content">
             {children}
-        </div>
         <div className="push"></div>
     </div>
     <Footer />

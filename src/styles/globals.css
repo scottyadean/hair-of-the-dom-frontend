@@ -7,6 +7,13 @@ html, body {
     padding: 7px;
 }
 
+hr{
+  height: 1px;
+  width: 100%;
+  border: none;
+  background-color: #555;
+}
+
 a{
     text-decoration: none;
     color: beige;
@@ -58,6 +65,10 @@ a{
     justify-content: flex-start;
     align-items: auto;
     align-content: flex-start;
+  }
+
+  .content-padding{
+    padding: 7px;
   }
 
 
@@ -137,6 +148,11 @@ a{
     padding-top: 5px;
     border-top: 1px solid beige;
     text-align: center;
-    
+  }
 
+
+  .code{
+    border-radius: 5px;
+    padding: 7px;
+    background-color: #3b3b38;
   }
