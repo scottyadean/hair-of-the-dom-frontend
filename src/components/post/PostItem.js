@@ -20,8 +20,10 @@ function PostItem(props) {
           </h2>
           
           <div className='card-caption'>
-            <Link href="/post/dom-frontend-source-code">{post.description_sort}</Link>
+            <Link href={`/post/${post.slug}`}>{post.description_sort}</Link>
           </div>
+
+          <Link href={`/post/${post.slug}/update`} style={{fontSize: "80%", textAlign:"right"}}><small>edit</small></Link>
 
           </div>
         </div>

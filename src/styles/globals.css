@@ -68,13 +68,17 @@ a{
   }
 
   .content-padding{
-    padding: 7px;
+    padding: 17px;
   }
 
 
 .item {
     flex: 0 0 auto;
     margin: 8px;
+  }
+
+  .page{
+    padding: 20px;
   }
 
 
@@ -146,7 +150,7 @@ a{
   .card .card-caption {
     font-size: 12px;
     padding-top: 5px;
-    border-top: 1px solid beige;
+    border-top: 1px solid #555;
     text-align: center;
   }
 
@@ -155,4 +159,52 @@ a{
     border-radius: 5px;
     padding: 7px;
     background-color: #3b3b38;
+  }
+
+
+  .tab-list {
+    border-bottom: 1px solid #555;
+    padding-left: 0;
+  }
+  
+  .tab-list-item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: 0px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    border-radius: 5px 5px 0px 0px;
+  }
+  
+  .tab-list-active {
+    background-color: beige;
+    border: solid 1px #555;
+    color: #161511;
+    border-width: 1px 1px 0 1px;
+  }
+
+
+  .tr_odd{
+    background-color: rgb(48, 48, 45);
+  }
+
+  tr:hover{
+    background-color: #555;
+  }
+
+
+  label{
+    text-transform: capitalize;
+    font-weight: bold;
+
+  }
+
+
+.fity-percent{
+
+  width: 46%;
+
+}
+  .txt-right{
+    text-align: right;
   }

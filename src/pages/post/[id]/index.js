@@ -1,21 +1,107 @@
 
 import axios from "axios";
+import Link from 'next/link'
 import DefaultLayout from '@/layout/Default'
+import Tabs from '@/components/ui/Tabs'
 
+
+const ContentTabs = (props) => {
+
+  const { content } = props;
+
+  return (<Tabs> 
+          {content.map((c, i)=>{
+              return (
+                  <div key={`tab-${i}`} label={c.label}>
+                  <pre className={c.tag}> 
+                    {c.data}
+                  </pre>
+                </div>
+              );
+          })}
+
+          </Tabs>);
+}
+
+
+const ContentParagraph = (props) => { 
+
+
+  const { content } = props;
+
+ return (<div> 
+          {content.map((c, i)=>{
+              return (
+                  <p className={c.tag}> 
+                    {c.data}
+                  </p>
+              );
+          })}
+
+          </div>);
+}
+
+
+
+const ContentCode = (props) => { 
+
+
+  const { content } = props;
+
+ return (<div> 
+          {content.map((c, i)=>{
+              return (
+                  <pre className={c.tag}> 
+                    {c.data}
+                  </pre>
+              );
+          })}
+
+          </div>);
+
+}
+
+
+const ContentVideo = (props) => {
+  const { content } = props;
+  return (<div> 
+    {content.map((c, i)=>{
+        return (
+          <div dangerouslySetInnerHTML={{ __html: c.data }}></div>
+        );
+    })}
+
+    </div>);
+}
+
+const ContentHTML = (props) => {
+
+  const { content } = props;
+  return (<div> 
+    {content.map((c, i)=>{
+        return (
+          <div className={c.tag} dangerouslySetInnerHTML={{ __html: c.data }}></div>
+        );
+    })}
+
+    </div>);
+
+}
 
 
 const PostBody = (props) => {
   const {body} = props;
 
-  return (
-
-    <div>
-        {body.type == "paragraph" && (<p>{body.content}</p>) }
-        {body.type == "code" && (<pre className="code">{body.content}</pre>) }
-    </div>
-  );
-
-
+  return (<div>
+          <h3>{body.caption}</h3>
+          { body.type === "tabs" && <ContentTabs content={body.content} /> }
+          { body.type === "paragraph" && <ContentParagraph content={body.content} /> }
+          { body.type === 'youtube' && <ContentVideo content={body.content} /> }
+          { body.type === 'html' && <ContentHTML content={body.content} /> }
+          { body.type === 'code' && <ContentCode content={body.content} /> }
+          
+          
+          </div>);
 }
 
 
@@ -24,12 +110,27 @@ const PostView = (props) => {
   return (
 
       <div className="content-padding">
-        <h1>{post.title}</h1>
+
+        <div className="grid-container">
+          <div className="grid-item fity-percent"> 
+          <h1>{post.title}</h1>
+          </div>
+
+          <div className="grid-item fity-percent" > 
+            <div className="txt-right"> Category: {post.category} </div>          
+          </div>
+        </div>
+       
         <p>{post.description}</p>
+
+        <div dangerouslySetInnerHTML={{ __html: post.html_content }}></div>
+
         <hr />
-        {post.post_body.map((p, i)=><PostBody key={`post-body-${i}`} body={p} />)}
-        catagory: {post.catagory} | {post.created_on} <br />
+        {post.post_body.map((pb, i)=><PostBody key={`post-body-${i}`} body={pb} />)}
+        {post.created_on} <br />
         {post.repo_link && (<a href={post.repo_link} target="_blank" aria-label={`download ${post.title}`} > download the code here</a> )}
+        <br />
+        <Link href={`/post/${post.slug}/update`} style={{fontSize: "80%", textAlign:"right"}}><small>edit</small></Link>
     
       </div>
 
@@ -48,11 +149,9 @@ function PostIndex( props ) {
 
 PostIndex.getInitialProps = async ({ query }) => {
   const {id} = query;
-  const res = await axios.get("https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/post/"+id);
+  // https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/post/
+  const res = await axios.get("http://localhost:3001/post/"+id);
   return { post: res.data.results };
 }
-
-
-
 
 export default PostIndex
