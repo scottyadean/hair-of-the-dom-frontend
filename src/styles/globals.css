@@ -124,9 +124,9 @@ a{
     align-items: stretch;
     align-content: stretch;
 
-    width: 260px;
+    width: 270px;
     border: 1px solid beige;
-    height: 260px;
+    height: 270px;
     border-radius: 5px;
     padding: 10px;
 
@@ -140,16 +140,18 @@ a{
     border-radius: 15px;
   }
 
-  .card h2.card-text {
+  .card .card-text {
     padding: 0px;
     margin: 0px;
-    font-size: 12px;
+    font-size: 11px;
+    overflow: hidden;
   }
 
 
   .card .card-caption {
     font-size: 12px;
-    padding-top: 5px;
+    padding-top: 15px;
+    
     border-top: 1px solid #555;
     text-align: center;
   }

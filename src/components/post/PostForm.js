@@ -4,12 +4,8 @@ class PostForm extends React.Component {
     constructor(props) {
     
         super(props);
-
-        console.log(this.props)
-
         const {data} = this.props;
 
-  
         this.state = {
         key: "xxxxxxxxxxxxxxxxxx",
         title: data.title,
@@ -35,7 +31,6 @@ class PostForm extends React.Component {
     const { name, value } = event.target;
     const values = [...this.state.post_body];
     values[index][name] = value;
-    console.log(index, name, value)
     this.setState({ post_body: [...values] });
   };
 
@@ -72,7 +67,6 @@ class PostForm extends React.Component {
   let idx = parseInt(evt.target.value);
   const values = [...this.state.post_body];
   values[idx].content.push({data: "", tag: "code", label: ""});
-  console.log(values)
   this.setState({ post_body: [...values] });
 
   };
@@ -171,8 +165,6 @@ class PostForm extends React.Component {
 
           {post_body.map((val, idx) => {
 
-            console.log(val)
-
             if (val.content == undefined){
                 val.content = []
             }
@@ -205,7 +197,6 @@ class PostForm extends React.Component {
                       onChange={(event) => this.handleChange(idx, event)}/>  
 
                     <br />
-                    {console.log(typeof(val.content))}
 
                       {val.content.map((content, index) => {
                         return (

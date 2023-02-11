@@ -10,14 +10,8 @@ function PostUpdate(props) {
   const {post} = props;
 
   const onFormSubmit = async (data) => {
-
     data._id = post._id
-    console.log(data)
     const res = await axios.put(`${process.env.API_ENDPOINT}/post`, data, {headers: { "Authorization": data.key }  });
-    
-    console.log(res)
-  
-  
   }
 
   return (

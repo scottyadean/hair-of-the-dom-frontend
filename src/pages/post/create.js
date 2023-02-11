@@ -2,9 +2,6 @@ import React from 'react'
 import axios from "axios";
 import PostForm from "@/components/post/PostForm";
 
-
-
-
 function PostUpdate(props) {
 
   const post = {
@@ -24,15 +21,7 @@ function PostUpdate(props) {
   }
 
   const onFormSubmit = async (data) => {
-    //https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/post/"+id
-
-    
-    console.log(data)
-    const res = await axios.post("http://localhost:3001/post", data, {headers: { "Authorization": data.key }  });
-    
-    console.log(res)
-  
-  
+    const res = await axios.post(`${process.env.API_ENDPOINT}/post`, data, {headers: { "Authorization": data.key }  });
   }
 
   return (
