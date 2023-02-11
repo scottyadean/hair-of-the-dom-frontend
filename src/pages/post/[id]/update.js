@@ -13,7 +13,7 @@ function PostUpdate(props) {
 
     data._id = post._id
     console.log(data)
-    const res = await axios.put(`${process.env.API_ENDPOINT}/post`, data, {headers: { "x-api-token": data.key }  });
+    const res = await axios.put(`${process.env.API_ENDPOINT}/post`, data, {headers: { "Authorization": data.key }  });
     
     console.log(res)
   

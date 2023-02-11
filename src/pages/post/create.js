@@ -28,7 +28,7 @@ function PostUpdate(props) {
 
     
     console.log(data)
-    const res = await axios.post("http://localhost:3001/post", data, {headers: { "x-api-token": data.key }  });
+    const res = await axios.post("http://localhost:3001/post", data, {headers: { "Authorization": data.key }  });
     
     console.log(res)
   
