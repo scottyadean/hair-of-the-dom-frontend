@@ -16,7 +16,7 @@ const Home = (props) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const res = await axios.get("https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/posts");
+  const res = await axios.get(`${process.env.API_ENDPOINT}/posts`);
   return {
     props: { posts: res.data.results },
   };

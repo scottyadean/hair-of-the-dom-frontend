@@ -32,7 +32,7 @@ const ContentParagraph = (props) => {
  return (<div> 
           {content.map((c, i)=>{
               return (
-                  <p className={c.tag}> 
+                  <p key={`p-content-${i}`} className={c.tag}> 
                     {c.data}
                   </p>
               );
@@ -51,7 +51,7 @@ const ContentCode = (props) => {
  return (<div> 
           {content.map((c, i)=>{
               return (
-                  <pre className={c.tag}> 
+                  <pre key={`code-content-${i}`} className={c.tag}> 
                     {c.data}
                   </pre>
               );
@@ -67,7 +67,7 @@ const ContentVideo = (props) => {
   return (<div> 
     {content.map((c, i)=>{
         return (
-          <div dangerouslySetInnerHTML={{ __html: c.data }}></div>
+          <div key={`video-content-${i}`} dangerouslySetInnerHTML={{ __html: c.data }}></div>
         );
     })}
 
@@ -80,7 +80,7 @@ const ContentHTML = (props) => {
   return (<div> 
     {content.map((c, i)=>{
         return (
-          <div className={c.tag} dangerouslySetInnerHTML={{ __html: c.data }}></div>
+          <div key={`html-content-${i}`} className={c.tag} dangerouslySetInnerHTML={{ __html: c.data }}></div>
         );
     })}
 
@@ -149,8 +149,7 @@ function PostIndex( props ) {
 
 PostIndex.getInitialProps = async ({ query }) => {
   const {id} = query;
-  // https://36r6061fu2.execute-api.us-east-1.amazonaws.com/development/post/
-  const res = await axios.get("http://localhost:3001/post/"+id);
+  const res = await axios.get(`${process.env.API_ENDPOINT}/post/${id}`);
   return { post: res.data.results };
 }
 
